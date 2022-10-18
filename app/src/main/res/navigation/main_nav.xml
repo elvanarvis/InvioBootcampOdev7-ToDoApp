@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.bootcamp.inviobootcampodev7_todoapp.ui.fragment.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_createToDoFragment"
+            app:destination="@id/createToDoFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailToDoFragment"
+            app:destination="@id/detailToDoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createToDoFragment"
+        android:name="com.bootcamp.inviobootcampodev7_todoapp.ui.fragment.CreateToDoFragment"
+        android:label="fragment_create_to_do"
+        tools:layout="@layout/fragment_create_to_do" />
+    <fragment
+        android:id="@+id/detailToDoFragment"
+        android:name="com.bootcamp.inviobootcampodev7_todoapp.ui.fragment.DetailToDoFragment"
+        android:label="fragment_detail_to_do"
+        tools:layout="@layout/fragment_detail_to_do" >
+        <argument
+            android:name="todo"
+            app:argType="com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo" />
+    </fragment>
+</navigation>
