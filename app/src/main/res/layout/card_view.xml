@@ -1,73 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:elevation="12dp"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_view"
+    <data>
+        <variable
+            name="toDoObject"
+            type="com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo" />
+        </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:elevation="12dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        app:cardElevation="6dp"
-        app:cardCornerRadius="10dp"
-        android:outlineAmbientShadowColor="@color/dark_green"
-        android:outlineSpotShadowColor="@color/light_green"
-        app:strokeColor="@color/light_green"
-        app:strokeWidth="1dp"
-        >
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cv_constraint"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            app:cardElevation="6dp"
+            app:cardCornerRadius="10dp"
+            android:outlineAmbientShadowColor="@color/dark_green"
+            android:outlineSpotShadowColor="@color/light_green"
+            app:strokeColor="@color/light_green"
+            app:strokeWidth="1dp">
 
-            <TextView
-                android:id="@+id/tv_do"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/sacramento"
-                android:gravity="center"
-                android:text="Ekmek Al"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@id/cv_constraint"
-                app:layout_constraintEnd_toStartOf="@id/iv_delete"
-                app:layout_constraintStart_toEndOf="@id/checkBox"
-                app:layout_constraintTop_toTopOf="@id/cv_constraint" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cvConstraint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/iv_delete"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="4dp"
-                android:alpha="0.7"
-                app:layout_constraintBottom_toBottomOf="@id/cv_constraint"
-                app:layout_constraintTop_toTopOf="@id/cv_constraint"
-                app:layout_constraintEnd_toEndOf="@id/cv_constraint"
-                android:src="@drawable/ic_delete"
-                />
+                <TextView
+                    android:id="@+id/textViewDo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:fontFamily="@font/quicksand"
+                    android:gravity="center"
+                    android:text="@{toDoObject.do_txt}"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/cvConstraint"
+                    app:layout_constraintEnd_toStartOf="@id/imageViewDelete"
+                    app:layout_constraintStart_toEndOf="@id/checkBox"
+                    app:layout_constraintTop_toTopOf="@id/cvConstraint" />
 
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/checkBox"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:alpha="0.8"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="8dp"
-                app:layout_constraintTop_toTopOf="@id/iv_delete"
-                app:layout_constraintBottom_toBottomOf="@id/iv_delete"
-                app:layout_constraintStart_toStartOf="@id/cv_constraint"
-                app:useMaterialThemeColors="true"
-                />
+                <ImageView
+                    android:id="@+id/imageViewDelete"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="4dp"
+                    android:alpha="0.7"
+                    app:layout_constraintBottom_toBottomOf="@id/cvConstraint"
+                    app:layout_constraintTop_toTopOf="@id/cvConstraint"
+                    app:layout_constraintEnd_toEndOf="@id/cvConstraint"
+                    android:src="@drawable/ic_delete" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.checkbox.MaterialCheckBox
+                    android:id="@+id/checkBox"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:alpha="0.8"
+                    android:checked="@{toDoObject.done == 1}"
+                    android:layout_marginEnd="4dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintTop_toTopOf="@id/imageViewDelete"
+                    app:layout_constraintBottom_toBottomOf="@id/imageViewDelete"
+                    app:layout_constraintStart_toStartOf="@id/cvConstraint"
+                    app:useMaterialThemeColors="true" />
 
-</LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</layout>

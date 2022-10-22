@@ -9,10 +9,11 @@
         <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/drawable/main_toolbar_background.xml" value="0.211" />
         <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/drawable/update_toolbar_background.xml" value="0.158" />
         <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/card_view.xml" value="0.264" />
-        <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/fragment_create_to_do.xml" value="0.2" />
+        <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/card_view.xml" value="0.1" />
+        <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/fragment_create_to_do.xml" value="0.1" />
         <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/fragment_detail_to_do.xml" value="0.264" />
         <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/layout/fragment_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/elvan/AndroidStudioProjects/InvioBootcampOdev7ToDoApp/app/src/main/res/menu/toolbar_menu.xml" value="0.253125" />
       </map>
     </option>
   </component>

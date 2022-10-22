@@ -1,50 +1,101 @@
 package com.bootcamp.inviobootcampodev7_todoapp.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
+import android.view.*
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuProvider
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bootcamp.inviobootcampodev7_todoapp.R
 import com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo
 import com.bootcamp.inviobootcampodev7_todoapp.databinding.FragmentMainBinding
 import com.bootcamp.inviobootcampodev7_todoapp.ui.adapter.ToDoAdapter
+import com.bootcamp.inviobootcampodev7_todoapp.ui.viewmodel.MainViewModel
+import com.bootcamp.inviobootcampodev7_todoapp.utils.changePage
+import dagger.hilt.android.AndroidEntryPoint
 
-
-class MainFragment : Fragment(R.layout.fragment_main) {
+@AndroidEntryPoint
+class MainFragment : Fragment(R.layout.fragment_main), SearchView.OnQueryTextListener {
 
     private lateinit var binding: FragmentMainBinding
+    private lateinit var viewModel: MainViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMainBinding.bind(view)
+        binding = DataBindingUtil.bind(view)!!
+        binding.toDoMainFragment = this
+        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
 
-        binding.fab.setOnClickListener {
-
-            Navigation.findNavController(it).navigate(R.id.action_mainFragment_to_createToDoFragment)
+        viewModel.toDoList.observe(viewLifecycleOwner) {
+            val adapter = ToDoAdapter(requireContext(), it, viewModel)
+            binding.toDoAdapter = adapter
         }
 
-        val toDoList = ArrayList<ToDo>()
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.toolbar_menu, menu)
 
-        val t1 = ToDo(1, "Evi süpür")
-        val t2 = ToDo(2, "Ödevini bitir")
-        val t3 = ToDo(3, "Şarkı listeni düzenle")
-        val t4 = ToDo(4, "Defter al")
-        val t5 = ToDo(5,"Kargo gelecek")
-        val t6 = ToDo(6,"Mayonez al")
+                val item = menu.findItem(R.id.action_search)
+                val searchView = item.actionView as SearchView
+                searchView.setOnQueryTextListener(this@MainFragment)
+            }
 
-        toDoList.add(t1)
-        toDoList.add(t2)
-        toDoList.add(t3)
-        toDoList.add(t4)
-        toDoList.add(t5)
-        toDoList.add(t6)
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
 
-        binding.rv.layoutManager = LinearLayoutManager(requireContext())
+                /* when (menuItem.itemId) {
+                     R.id.action_search -> {
+                         Toast.makeText(requireContext(), "Helal len", Toast.LENGTH_SHORT).show()
+                         return true
+                     }
+                     else -> return false
+                 }*/
+                return false
+            }
 
-        val adapter = ToDoAdapter(requireContext(),toDoList)
-        binding.rv.adapter = adapter
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val tempViewModel: MainViewModel by viewModels()
+        viewModel = tempViewModel
+    }
+
+    fun fabClick(view: View) {
+
+        Navigation.changePage(view, R.id.action_mainFragment_to_createToDoFragment)
+        val v = "true"
+        var f = false
+        f = v.toBoolean()
+        Log.e("ToDo", "$f")
+        Log.e("ToDo" ,"${f.toString()}")
+
+    }
+
+    override fun onQueryTextSubmit(query: String): Boolean {
+        search(query)
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String): Boolean {
+        search(newText)
+        return true
+    }
+
+    fun search(word: String) {
+        viewModel.search(word)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.toDoLoading()
     }
 }
 

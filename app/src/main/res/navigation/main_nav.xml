@@ -21,7 +21,11 @@
         android:id="@+id/createToDoFragment"
         android:name="com.bootcamp.inviobootcampodev7_todoapp.ui.fragment.CreateToDoFragment"
         android:label="fragment_create_to_do"
-        tools:layout="@layout/fragment_create_to_do" />
+        tools:layout="@layout/fragment_create_to_do" >
+        <action
+            android:id="@+id/action_createToDoFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailToDoFragment"
         android:name="com.bootcamp.inviobootcampodev7_todoapp.ui.fragment.DetailToDoFragment"
@@ -30,5 +34,8 @@
         <argument
             android:name="todo"
             app:argType="com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo" />
+        <action
+            android:id="@+id/action_detailToDoFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 </navigation>
