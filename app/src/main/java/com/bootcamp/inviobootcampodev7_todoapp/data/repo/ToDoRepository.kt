@@ -1,14 +1,15 @@
 package com.bootcamp.inviobootcampodev7_todoapp.data.repo
 
 import android.util.Log
+import android.view.View
 import com.bootcamp.inviobootcampodev7_todoapp.data.datasource.ToDoDataSource
 import com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo
 
 class ToDoRepository(var tds: ToDoDataSource) {
 
-    suspend fun save(do_txt: String) = tds.save(do_txt)
+    suspend fun save(do_txt: String, view: View) = tds.save(do_txt, view)
 
-    suspend fun update(do_id: Int, do_txt:String) = tds.update(do_id,do_txt)
+    suspend fun update(do_id: Int, do_txt:String, view: View) = tds.update(do_id,do_txt, view)
 
     suspend fun toDoLoading() : List<ToDo> = tds.toDoLoading()
 

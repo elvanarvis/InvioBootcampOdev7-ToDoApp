@@ -22,7 +22,7 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbarDetail"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="300dp"
             android:background="@drawable/update_toolbar_background"
             android:elevation="16dp"
             android:gravity="bottom"
@@ -30,16 +30,16 @@
             app:title="@string/title"
             app:titleCentered="true"
             app:titleMarginBottom="20dp"
-            app:titleTextAppearance="@style/TextAppearance.AppCompat.Display1"
+            app:titleTextAppearance="@style/TextAppearance.AppCompat.Display3"
             app:titleTextColor="@color/white" />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="350dp"
+            android:layout_marginEnd="100dp"
             app:boxStrokeColor="@color/yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -50,6 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@{toDoObject.do_txt}"
+                android:textSize="36sp"
                 android:textCursorDrawable="@null" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -57,14 +58,15 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonUpdate"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="88dp"
             android:backgroundTint="@color/yellow"
-            android:layout_marginStart="50dp"
-            app:cornerRadius="10dp"
+            android:layout_marginStart="100dp"
+            app:cornerRadius="20dp"
             android:onClick="@{() -> toDoDetailFragment.buttonUpdate(toDoObject.do_id,editTextUpdate.getText().toString(),buttonUpdate)}"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="100dp"
             android:layout_marginBottom="50dp"
             android:text="@string/update"
+            android:textSize="36sp"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

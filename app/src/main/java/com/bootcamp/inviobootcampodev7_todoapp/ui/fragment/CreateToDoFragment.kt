@@ -14,6 +14,7 @@ import com.bootcamp.inviobootcampodev7_todoapp.R
 import com.bootcamp.inviobootcampodev7_todoapp.data.entity.ToDo
 import com.bootcamp.inviobootcampodev7_todoapp.databinding.FragmentCreateToDoBinding
 import com.bootcamp.inviobootcampodev7_todoapp.ui.viewmodel.CreateToDoViewModel
+import com.bootcamp.inviobootcampodev7_todoapp.utils.changePage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -35,8 +36,8 @@ class CreateToDoFragment : Fragment(R.layout.fragment_create_to_do) {
         viewModel = tempViewModel
     }
 
-    fun buttonSave(do_txt: String) {
+    fun buttonSave(do_txt: String, view: View) {
 
-        viewModel.save(do_txt)
+        viewModel.save(do_txt, view)
     }
 }

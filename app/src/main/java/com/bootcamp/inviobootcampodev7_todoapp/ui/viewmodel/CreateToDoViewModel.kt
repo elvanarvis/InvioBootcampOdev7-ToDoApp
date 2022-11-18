@@ -1,5 +1,6 @@
 package com.bootcamp.inviobootcampodev7_todoapp.ui.viewmodel
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import com.bootcamp.inviobootcampodev7_todoapp.data.repo.ToDoRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,9 +12,9 @@ import javax.inject.Inject
 @HiltViewModel
 class CreateToDoViewModel @Inject constructor(var trepo : ToDoRepository): ViewModel() {
 
-    fun save( do_txt: String){
+    fun save( do_txt: String, view: View){
         CoroutineScope(Dispatchers.Main).launch {
-            trepo.save(do_txt)
+            trepo.save(do_txt, view)
         }
     }
 }

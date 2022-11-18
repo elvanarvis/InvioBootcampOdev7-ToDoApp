@@ -13,6 +13,7 @@ import androidx.navigation.fragment.navArgs
 import com.bootcamp.inviobootcampodev7_todoapp.R
 import com.bootcamp.inviobootcampodev7_todoapp.databinding.FragmentDetailToDoBinding
 import com.bootcamp.inviobootcampodev7_todoapp.ui.viewmodel.DetailToDoViewModel
+import com.bootcamp.inviobootcampodev7_todoapp.utils.changePage
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,8 +39,8 @@ class DetailToDoFragment : Fragment(R.layout.fragment_detail_to_do) {
         viewModel = tempViewModel
     }
 
-    fun buttonUpdate(do_id: Int, do_txt:String){
-        viewModel.update(do_id,do_txt)
+    fun buttonUpdate(do_id: Int, do_txt:String, view: View){
+        viewModel.update(do_id,do_txt,view)
     }
 }
 
