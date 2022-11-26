@@ -61,6 +61,7 @@ class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, var viewModel
             t.cardView.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.orange))
         }
 
+
         t.checkBox.setOnCheckedChangeListener { compoundButton, b ->
             when (b) {
                 true ->{
@@ -71,6 +72,7 @@ class ToDoAdapter(var mContext: Context, var toDoList: List<ToDo>, var viewModel
                 false ->{
                     viewModel.click(toDo.do_id,toDo.do_txt,0)
                     Log.e("ToDo", "${toDo.done} - 0")
+                    t.cardView.setCardBackgroundColor(ContextCompat.getColor(mContext, R.color.white))
                 }
             }
         }
